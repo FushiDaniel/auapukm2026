@@ -1,32 +1,4 @@
-/*-----------------------------------------------------------------------------------
-    
-    Template Name: Orbia - AI Agency & Technology HTML Template
-    URI: https://nayonacademy.com/
-    Description: Orbia – AI Agency & Technology HTML Template is a modern, clean, and fully responsive template designed for AI startups, tech companies, digital agencies, and innovative businesses. With a sleek user interface and cutting-edge design, Orbia helps you showcase your services, products, and projects in a professional way.
-    Author: Themeservices
-    Author URI: https://themeforest.net/user/themeservices
-    Version: 1.0 
 
-    Note: This is Main Js file
-
------------------------------------------------------------------------------------
-    ===================
-    Js INDEX
-    ===================
-    ## Main Menu
-    ## Offcanvas Overlay
-    ## Preloader
-    ## Sticky
-    ## Magnific-popup js
-    ## Slick Slider
-    ## Gsap
-    ## Project JS
-    ## Item Active JS
-    ## Dynamic Background
-    ## AOS Js
-    ## Document Ready
-    
------------------------------------------------------------------------------------*/
 
 (function($) {
     'use strict';
@@ -42,14 +14,30 @@
         navMenuLi = $('.theme-nav-menu ul li ul li'),
         closeIcon = $('.navbar-close');
 
+        function openMenu() {
+            navbarToggler.addClass('active');
+            navMenu.addClass('menu-on');
+            $('.offcanvas__overlay').addClass('overlay-open');
+            $('body').addClass('menu-open');
+        }
+
+        function closeMenu() {
+            navbarToggler.removeClass('active');
+            navMenu.removeClass('menu-on');
+            $('.offcanvas__overlay').removeClass('overlay-open');
+            $('body').removeClass('menu-open');
+        }
+
         navbarToggler.on('click', function() {
-            navbarToggler.toggleClass('active');
-            navMenu.toggleClass('menu-on');
+            if (navMenu.hasClass('menu-on')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
         });
 
         closeIcon.on('click', function() {
-            navMenu.removeClass('menu-on');
-            navbarToggler.removeClass('active');
+            closeMenu();
         });
 
         navMenu.find("li a").each(function() {
@@ -75,15 +63,19 @@
         const $overlay = $(".offcanvas__overlay");
         const $toggler = $(".navbar-toggler");
         const $menu = $(".theme-nav-menu");
-        $toggler.add($overlay).add(".navbar-close").on("click", function () {
-            $overlay.toggleClass("overlay-open");
-            if ($(this).is($overlay)) {
-                $toggler.removeClass("active");
-                $menu.removeClass("menu-on");
-            }
+        $overlay.on("click", function () {
+            $overlay.removeClass("overlay-open");
+            $toggler.removeClass("active");
+            $menu.removeClass("menu-on");
+            $("body").removeClass("menu-open");
         });
         $(window).on("resize", function () {
-            if ($(window).width() > 991) $overlay.removeClass("overlay-open");
+            if ($(window).width() > 1199.98) {
+                $overlay.removeClass("overlay-open");
+                $toggler.removeClass("active");
+                $menu.removeClass("menu-on");
+                $("body").removeClass("menu-open");
+            }
         });
     }
 
@@ -101,21 +93,32 @@
         function initStickyHeader(headerSelector) {
             const header = $(headerSelector);
             let lastScroll = 0;
-            $(window).on('scroll', function () {
-                const currentScroll = $(this).scrollTop();
-                if (currentScroll > 200) {
-                    if (currentScroll < lastScroll) {
-                        if (!header.hasClass('sticky')) {
-                            header.addClass('sticky');
-                        }
-                    } else {
-                        header.removeClass('sticky');
+            const updateStickyState = () => {
+                const currentScroll = $(window).scrollTop();
+                const isMobileMenuViewport = window.matchMedia("(max-width: 1199.98px)").matches;
+                const stickyStart = 40;
+                const hideStart = 140;
+                const delta = 6;
+
+                if (isMobileMenuViewport) {
+                    header.addClass('sticky').removeClass('header-hidden');
+                } else if (currentScroll <= stickyStart) {
+                    header.removeClass('sticky header-hidden');
+                } else {
+                    header.addClass('sticky');
+
+                    if (currentScroll > lastScroll + delta && currentScroll > hideStart) {
+                        header.addClass('header-hidden');
+                    } else if (currentScroll < lastScroll - delta) {
+                        header.removeClass('header-hidden');
                     }
-                } else if (currentScroll === 0) {
-                    header.removeClass('sticky');
                 }
+
                 lastScroll = currentScroll;
-            });
+            };
+
+            $(window).on('scroll resize', updateStickyState);
+            updateStickyState();
         }
         initStickyHeader('.header-navigation');
     });
@@ -124,13 +127,18 @@
     
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window;
+    const isMobileViewport = window.matchMedia("(max-width: 991px)").matches;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const useDesktopMotion = !isTouchDevice && !isMobileViewport && !prefersReducedMotion;
+
     // Gsap ScrollSmoother
 
-    const smoother = ScrollSmoother.create({
+    const smoother = useDesktopMotion ? ScrollSmoother.create({
     smooth: 1,
     effects: true,
-        smoothTouch: 0.1,
-    });
+        smoothTouch: 0,
+    }) : null;
 
     // One-page anchor navigation
 
@@ -158,6 +166,7 @@
         $('.theme-nav-menu').removeClass('menu-on');
         $('.navbar-toggler').removeClass('active');
         $('.offcanvas__overlay').removeClass('overlay-open');
+        $('body').removeClass('menu-open');
         scrollToSection(hash);
 
         if (window.history && window.history.pushState) {
@@ -177,7 +186,7 @@
 
     // Gsap SplitText
 
-    if ($('.text-anm').length) {
+    if (useDesktopMotion && $('.text-anm').length) {
 		let staggerAmount = 0.01,
 			translateXValue = 40,
 			delayValue = .5,
@@ -215,7 +224,10 @@
     //===== Aos Animation
 
     AOS.init({
-        offset: 0
+        offset: 0,
+        disable: function () {
+            return isTouchDevice || isMobileViewport || prefersReducedMotion;
+        }
     });
 
     // Document Ready
