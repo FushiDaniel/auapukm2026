@@ -34,9 +34,40 @@
                 background: #fffdf9;
             }
 
-            .header-navigation.sticky {
-                background: rgba(8, 23, 47, 0.92);
+            body.menu-open {
+                overflow: hidden;
+            }
+
+            .transparent-header {
+                top: 0;
+            }
+
+            .header-one .header-navigation,
+            .header-one .header-navigation.sticky {
+                background: rgba(8, 23, 47, 0.78);
+                background-color: rgba(8, 23, 47, 0.78);
+                -webkit-backdrop-filter: blur(14px);
                 backdrop-filter: blur(14px);
+            }
+
+            @media (min-width: 1200px) {
+                .header-navigation {
+                    will-change: transform;
+                    transition: transform 0.25s ease, background 0.25s ease, backdrop-filter 0.25s ease;
+                }
+
+                .header-navigation .primary-menu {
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                }
+
+                .header-navigation.sticky {
+                    transform: translateY(0);
+                }
+
+                .header-navigation.sticky.header-hidden {
+                    transform: translateY(-100%);
+                }
             }
 
             .ukm-brand {
@@ -99,6 +130,17 @@
             .header-navigation .main-menu ul > li > a {
                 font-weight: 600;
                 letter-spacing: 0.02em;
+            }
+
+            .header-navigation .nav-right-item .navbar-toggler {
+                border-color: rgba(255, 255, 255, 0.7);
+                border-radius: 12px;
+                position: relative;
+                z-index: 10002;
+            }
+
+            .header-navigation .nav-right-item .navbar-toggler span {
+                background-color: rgba(255, 255, 255, 0.88);
             }
 
             .theme-btn.gradient-btn {
@@ -184,6 +226,10 @@
                 margin-bottom: 24px;
                 font-size: clamp(56px, 5.8vw, 84px);
                 line-height: 1.02;
+                word-break: keep-all;
+                overflow-wrap: normal;
+                hyphens: none;
+                text-wrap: balance;
             }
 
             .ukm-hero-copy {
@@ -622,17 +668,23 @@
             }
 
             .ukm-speaker-avatar {
-                width: 72px;
-                height: 72px;
+                width: 250px;
+                height: 250px;
                 margin-bottom: 20px;
                 border-radius: 22px;
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 22px;
-                font-weight: 800;
-                color: #fff;
-                background: linear-gradient(135deg, var(--ukm-maroon), var(--ukm-gold));
+                overflow: hidden;
+                background: linear-gradient(15deg, #c56c6952, #1565c027);
+                box-shadow: inset 0 0 0 1px rgba(143, 177, 235, 0.08);
+            }
+
+            .ukm-speaker-avatar img {
+                width: 100%;
+                height: 100%;
+                display: block;
+                object-fit: cover;
             }
 
             .ukm-speaker-card .position {
@@ -731,7 +783,7 @@
             }
 
             .ukm-cohost-card {
-                min-height: 110px;
+                min-height: 200px;
                 padding: 12px;
                 border-radius: 0;
                 display: flex;
@@ -750,6 +802,15 @@
                 text-transform: uppercase;
             }
 
+            .ukm-cohost-card img {
+                max-width: 100%;
+                max-height: 100px;
+                width: auto;
+                height: auto;
+                object-fit: contain;
+                display: block;
+            }
+
             .footer-newsletter-wrapper {
                 padding-top: 74px;
             }
@@ -765,6 +826,88 @@
             }
 
             @media (max-width: 1199px) {
+                .header-navigation .theme-nav-menu,
+                .header-navigation .navbar-toggler,
+                .offcanvas__overlay {
+                    display: none !important;
+                }
+
+                .header-navigation .nav-right-item {
+                    display: none;
+                }
+
+                .header-navigation .primary-menu {
+                    justify-content: flex-start;
+                }
+
+                .header-area.header-one.transparent-header {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    width: 100%;
+                    z-index: 10001;
+                }
+
+                .header-one .header-navigation,
+                .header-one .header-navigation.sticky {
+                    background: rgba(8, 23, 47, 0.82);
+                    background-color: rgba(8, 23, 47, 0.82);
+                    -webkit-backdrop-filter: blur(14px);
+                    backdrop-filter: blur(14px);
+                }
+
+                .header-navigation .theme-nav-menu {
+                    left: -100%;
+                    width: min(100vw, 360px);
+                    top: 0;
+                    padding: 24px 24px 34px;
+                    background: linear-gradient(180deg, rgba(8, 23, 47, 0.98) 0%, rgba(16, 40, 77, 0.98) 100%);
+                    box-shadow: 22px 0 60px rgba(8, 23, 47, 0.28);
+                    z-index: 10000;
+                }
+
+                .header-navigation .theme-nav-menu .theme-menu-top {
+                    padding-bottom: 16px;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+                }
+
+                .header-navigation .theme-nav-menu .main-menu {
+                    margin-top: 24px;
+                }
+
+                .header-navigation .theme-nav-menu .main-menu ul li:not(:last-child) {
+                    border-bottom-color: rgba(255, 255, 255, 0.18);
+                }
+
+                .header-navigation .theme-nav-menu .main-menu ul li a {
+                    color: rgba(255, 255, 255, 0.92);
+                    font-size: 22px;
+                    font-weight: 700;
+                    line-height: 1.2;
+                    padding: 16px 0;
+                }
+
+                .header-navigation .theme-nav-menu .main-menu ul li a:hover {
+                    color: var(--ukm-gold);
+                }
+
+                .header-navigation .theme-menu-bottom {
+                    margin-top: 34px !important;
+                }
+
+                .header-navigation .theme-menu-bottom h5 {
+                    color: rgba(255, 255, 255, 0.6);
+                }
+
+                .header-navigation .theme-menu-bottom p {
+                    color: rgba(255, 255, 255, 0.82);
+                }
+
+                .offcanvas__overlay {
+                    z-index: 9998;
+                }
+
                 .orbia-hero_one .hero-wrapper {
                     min-height: auto;
                 }
@@ -772,6 +915,7 @@
                 .orbia-hero_one .hero-wrapper .hero-content {
                     padding-top: 165px;
                     padding-bottom: 40px;
+                    text-align: center;
                 }
 
                 .orbia-hero_one .hero-wrapper .hero-image {
@@ -786,6 +930,16 @@
                     margin: 24px auto 0;
                     width: 100%;
                     max-width: 620px;
+                }
+
+                .orbia-hero_one .hero-wrapper .hero-content h1,
+                .ukm-hero-copy {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .ukm-hero-meta {
+                    justify-content: center;
                 }
 
                 .ukm-floating-card.bottom {
@@ -833,12 +987,70 @@
                 .ukm-cohost-grid {
                     grid-template-columns: repeat(3, minmax(0, 1fr));
                 }
+
+                .orbia-pricing_one .section-title {
+                    text-align: center;
+                }
+
+                .orbia-pricing_one .section-title h2,
+                .orbia-pricing_one .section-title .sub-title {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
             }
 
             @media (max-width: 767px) {
                 .orbia-hero_one .hero-wrapper .hero-content {
-                    padding-top: 128px;
-                    padding-bottom: 12px;
+                    padding-top: 112px;
+                    padding-bottom: 8px;
+                }
+
+                .orbia-hero_one .hero-wrapper .hero-content h1 {
+                    max-width: 340px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    font-size: clamp(30px, 9vw, 40px);
+                    line-height: 1.08;
+                    word-break: keep-all;
+                    overflow-wrap: normal;
+                    hyphens: none;
+                    text-wrap: balance;
+                }
+
+                .ukm-hero-kicker {
+                    margin-left: auto;
+                    margin-right: auto;
+                    font-size: 12px;
+                }
+
+                .ukm-hero-copy {
+                    max-width: 310px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    font-size: 15px;
+                    line-height: 1.65;
+                }
+
+                .ukm-hero-meta {
+                    width: min(100%, 320px);
+                    margin: 20px auto 24px;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .ukm-meta-pill {
+                    width: 100%;
+                    max-width: 320px;
+                    padding: 12px 16px;
+                    justify-content: center;
+                    text-align: center;
+                }
+
+                .ukm-hero-panel {
+                    width: min(92%, 360px);
+                    max-width: 360px;
+                    margin-top: 10px;
                 }
 
                 .ukm-meta-pill,
@@ -855,11 +1067,24 @@
                 }
 
                 .ukm-hero-copy {
-                    font-size: 17px;
+                    font-size: 16px;
                 }
 
                 .ukm-cohost-grid {
                     grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+
+                .orbia-pricing_one .orbia-button {
+                    text-align: center !important;
+                }
+
+                .header-navigation .theme-nav-menu {
+                    width: 100vw;
+                    padding: 20px 18px 30px;
+                }
+
+                .header-navigation .theme-nav-menu .main-menu ul li a {
+                    font-size: 20px;
                 }
             }
         </style>
@@ -917,7 +1142,7 @@
                         </div>
                         <div class="nav-right-item">
                             <div class="nav-button d-none d-md-block">
-                                <a href="#snapshot" class="theme-btn gradient-btn">Register Now<i class="far fa-arrow-right"></i></a>
+                                <a href="https://luma.com/AUAP_DigitalAI_Traning2026" class="theme-btn gradient-btn">Register Now<i class="far fa-arrow-right"></i></a>
                             </div>
                             <div class="navbar-toggler">
                                 <span></span>
@@ -949,7 +1174,7 @@
                                             <p class="ukm-hero-copy" data-aos="fade-up" data-aos-duration="1400">A three-day international program hosted at Universiti Kebangsaan Malaysia that convenes higher education leaders, digital strategists, and innovation practitioners to shape AI-ready universities for global futures.</p>
                                             <div class="ukm-hero-meta" data-aos="fade-up" data-aos-duration="1600">
                                                 <span class="ukm-meta-pill"><i class="far fa-calendar-alt"></i>29 June 2026 to 1 July 2026</span>
-                                                <span class="ukm-meta-pill"><i class="far fa-map-marker-alt"></i>Universiti Kebangsaan Malaysia, Selangor</span>
+                                                <span class="ukm-meta-pill"><i class="far fa-map-marker-alt"></i>Universiti Kebangsaan Malaysia, Bangi, Selangor</span>
                                             </div>
                                             <div class="hero-button-wrap">
                                                 <div class="orbia-button" data-aos="fade-up" data-aos-duration="1800">
@@ -1528,7 +1753,7 @@
                                                 </ul>
                                             </div>
                                             <div class="pricing-button">
-                                                <a href="#snapshot" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
+                                                <a href="https://luma.com/AUAP_DigitalAI_Traning2026" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -1548,7 +1773,7 @@
                                                 </ul>
                                             </div>
                                             <div class="pricing-button">
-                                                <a href="#snapshot" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
+                                                <a href="https://luma.com/AUAP_DigitalAI_Traning2026" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -1569,7 +1794,7 @@
                                                 </ul>
                                             </div>
                                             <div class="pricing-button">
-                                                <a href="#snapshot" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
+                                                <a href="https://luma.com/AUAP_DigitalAI_Traning2026" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
                                             </div>
                                         </div>
                                     </div> -->
@@ -1589,7 +1814,7 @@
                                                 </ul>
                                             </div>
                                             <div class="pricing-button">
-                                                <a href="#snapshot" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
+                                                <a href="https://luma.com/AUAP_DigitalAI_Traning2026" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -1609,78 +1834,81 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="900">
-                                    <div class="ukm-speaker-card">
-                                        <div class="ukm-speaker-avatar">DS</div>
-                                        <h4>Datin Dr. Masdiana Sulaiman</h4>
-                                        <span class="position">CelcomDigi</span>
-                                        <p>Head of Innovation (XR &amp; Metaverse), delivering the keynote on the future of education in an age of intelligence.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1050">
-                                    <div class="ukm-speaker-card">
-                                        <div class="ukm-speaker-avatar">HN</div>
-                                        <h4>Assoc. Prof. Dr. Ts. Muhammad Helmi Norman</h4>
-                                        <span class="position">Universiti Kebangsaan Malaysia</span>
-                                        <p>Associate Professor of Digital &amp; Futuristic Education and convener of the AUAP Digital &amp; AI Transformation Committee.</p>
-                                    </div>
-                                </div>
                                 <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1200">
                                     <div class="ukm-speaker-card">
-                                        <div class="ukm-speaker-avatar">AC</div>
-                                        <h4>Dr. Arvin De La Cruz</h4>
-                                        <span class="position">Polytechnic University of the Philippines</span>
-                                        <p>Chair of the AUAP Digital &amp; AI Transformation Committee and keynote speaker on building intelligent universities.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1350">
-                                    <div class="ukm-speaker-card">
-                                        <div class="ukm-speaker-avatar">MJ</div>
-                                        <h4>Dr. M. Jaikumar</h4>
-                                        <span class="position">Hindustan Institute of Technology and Science</span>
-                                        <p>Dean of International Affairs and plenary forum panelist contributing to the regional leadership conversation.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1500">
-                                    <div class="ukm-speaker-card">
-                                        <div class="ukm-speaker-avatar">AG</div>
-                                        <h4>Mr. Apurba Ghosh</h4>
-                                        <span class="position">Daffodil International University</span>
-                                        <p>Assistant Professor in Multimedia and Creative Technology, bringing creative technology perspective to the plenary forum.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1650">
-                                    <div class="ukm-speaker-card">
-                                        <div class="ukm-speaker-avatar">AK</div>
-                                        <h4>Prof. Dr. Abd Karim Alias</h4>
-                                        <span class="position">Universiti Tenaga Nasional</span>
-                                        <p>Principal Fellow leading the workshop on disruptive digital leadership and future-proof institutional co-creation.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1800">
-                                    <div class="ukm-speaker-card">
-                                        <div class="ukm-speaker-avatar">SN</div>
-                                        <h4>Prof. Ts. Dr. Syamsul Nor Azlan Mohamad</h4>
-                                        <span class="position">Universiti Teknologi MARA</span>
-                                        <p>Director of Assessment &amp; Evaluation Division, leading the workshop on AI-augmented assessment and authentic evaluation.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1950">
-                                    <div class="ukm-speaker-card">
-                                        <div class="ukm-speaker-avatar">SC</div>
+                                        <div class="ukm-speaker-avatar"><img src="assets/images/DrImages/DrSupaporn.png" alt="Dr. Supaporn Chuangchid"></div>
                                         <h4>Dr. Supaporn Chuangchid</h4>
                                         <span class="position">Association of the Universities of Asia and the Pacific</span>
                                         <p>Executive Secretary of AUAP and one of the opening voices framing the international relevance of the program.</p>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="2100">
+                                <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1200">
                                     <div class="ukm-speaker-card">
-                                        <div class="ukm-speaker-avatar">NN</div>
+                                        <div class="ukm-speaker-avatar"><img src="assets/images/DrImages/DrNorazah.png" alt="Prof. Dato' Dr. Ts. Norazah Mohd Nordin"></div>
                                         <h4>Prof. Dato' Dr. Ts. Norazah Mohd Nordin</h4>
                                         <span class="position">Universiti Kebangsaan Malaysia</span>
                                         <p>Director, Center for International Strategic Negotiations and Sustainable Development Goals, and chair of the AUAP country committee.</p>
                                     </div>
                                 </div>
+                                <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1200">
+                                    <div class="ukm-speaker-card">
+                                        <div class="ukm-speaker-avatar"><img src="assets/images/DrImages/DrArvin.png" alt="Dr. Arvin De La Cruz"></div>
+                                        <h4>Dr. Arvin De La Cruz</h4>
+                                        <span class="position">Polytechnic University of the Philippines</span>
+                                        <p>Chair of the AUAP Digital &amp; AI Transformation Committee and keynote speaker on building intelligent universities.</p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1200">
+                                    <div class="ukm-speaker-card">
+                                        <div class="ukm-speaker-avatar"><img src="assets/images/DrImages/DrMasdiana.png" alt="Datin Dr. Masdiana Sulaiman"></div>
+                                        <h4>Datin Dr. Masdiana Sulaiman</h4>
+                                        <span class="position">CelcomDigi</span>
+                                        <p>Head of Innovation (XR &amp; Metaverse), delivering the keynote on the future of education in an age of intelligence.</p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1200">
+                                    <div class="ukm-speaker-card">
+                                        <div class="ukm-speaker-avatar"><img src="assets/images/DrImages/DrHelmi.png" alt="Assoc. Prof. Dr. Ts. Muhammad Helmi Norman"></div>
+                                        <h4>Assoc. Prof. Dr. Ts. Muhammad Helmi Norman</h4>
+                                        <span class="position">Universiti Kebangsaan Malaysia</span>
+                                        <p>Associate Professor of Digital &amp; Futuristic Education and convener of the AUAP Digital &amp; AI Transformation Committee.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1200">
+                                    <div class="ukm-speaker-card">
+                                        <div class="ukm-speaker-avatar"><img src="assets/images/DrImages/DrJaikumar.png" alt="Dr. M. Jaikumar"></div>
+                                        <h4>Dr. M. Jaikumar</h4>
+                                        <span class="position">Hindustan Institute of Technology and Science</span>
+                                        <p>Dean of International Affairs and plenary forum panelist contributing to the regional leadership conversation.</p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1200">
+                                    <div class="ukm-speaker-card">
+                                        <div class="ukm-speaker-avatar"><img src="assets/images/DrImages/DrApurba.png" alt="Mr. Apurba Ghosh"></div>
+                                        <h4>Mr. Apurba Ghosh</h4>
+                                        <span class="position">Daffodil International University</span>
+                                        <p>Assistant Professor in Multimedia and Creative Technology, bringing creative technology perspective to the plenary forum.</p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1200">
+                                    <div class="ukm-speaker-card">
+                                        <div class="ukm-speaker-avatar"><img src="assets/images/DrImages/DrAbdKarim.png" alt="Prof. Dr. Abd Karim Alias"></div>
+                                        <h4>Prof. Dr. Abd Karim Alias</h4>
+                                        <span class="position">Universiti Tenaga Nasional</span>
+                                        <p>Principal Fellow leading the workshop on disruptive digital leadership and future-proof institutional co-creation.</p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1200">
+                                    <div class="ukm-speaker-card">
+                                        <div class="ukm-speaker-avatar"><img src="assets/images/DrImages/DrSyamsul.png" alt="Prof. Ts. Dr. Syamsul Nor Azlan Mohamad"></div>
+                                        <h4>Prof. Ts. Dr. Syamsul Nor Azlan Mohamad</h4>
+                                        <span class="position">Universiti Teknologi MARA</span>
+                                        <p>Director of Assessment &amp; Evaluation Division, leading the workshop on AI-augmented assessment and authentic evaluation.</p>
+                                    </div>
+                                </div>
+                                
+                                
                             </div>
                         </div>
                     </section>
@@ -1795,12 +2023,12 @@
                                     <h2 class="text-anm">Partner institutions supporting the program</h2>
                                 </div>
                                 <div class="ukm-cohost-grid">
-                                    <div class="ukm-cohost-card"><span>Logo 1</span></div>
-                                    <div class="ukm-cohost-card"><span>Logo 2</span></div>
-                                    <div class="ukm-cohost-card"><span>Logo 3</span></div>
-                                    <div class="ukm-cohost-card"><span>Logo 4</span></div>
-                                    <div class="ukm-cohost-card"><span>Logo 5</span></div>
-                                    <div class="ukm-cohost-card"><span>Logo 6</span></div>
+                                    <div class="ukm-cohost-card"><img src="assets/images/logo1.png" alt="Co-host logo 1"></div>
+                                    <div class="ukm-cohost-card"><img src="assets/images/logo2.png" alt="Co-host logo 2"></div>
+                                    <div class="ukm-cohost-card"><img src="assets/images/logo3.png" alt="Co-host logo 3"></div>
+                                    <div class="ukm-cohost-card"><img src="assets/images/logo4.png" alt="Co-host logo 4"></div>
+                                    <div class="ukm-cohost-card"><img src="assets/images/logo5.png" alt="Co-host logo 5"></div>
+                                    <div class="ukm-cohost-card"><img src="assets/images/logo6.png" alt="Co-host logo 6"></div>
                                 </div>
                             </div>
                         </div>
@@ -1911,10 +2139,10 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
-                                        <div class="copyright-link text-lg-end text-center">
+                                        <!-- <div class="copyright-link text-lg-end text-center">
                                             <a href="#agenda">Program Agenda</a>
                                             <a href="#snapshot">Event Snapshot</a>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
