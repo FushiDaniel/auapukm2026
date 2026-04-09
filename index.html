@@ -1087,6 +1087,361 @@
                     font-size: 20px;
                 }
             }
+
+            :root {
+                --poster-bg: #050814;
+                --poster-bg-alt: #0d1128;
+                --poster-panel: rgba(23, 22, 59, 0.9);
+                --poster-panel-strong: rgba(12, 13, 34, 0.97);
+                --poster-line: rgba(177, 126, 255, 0.24);
+                --poster-line-strong: rgba(177, 126, 255, 0.38);
+                --poster-violet: #9049ff;
+                --poster-violet-bright: #bf63ff;
+                --poster-cyan: #69dcff;
+                --poster-text: #f2f3ff;
+                --poster-text-soft: #b8bddf;
+                --ukm-maroon: var(--poster-violet);
+                --ukm-maroon-deep: #5c2ae3;
+                --ukm-gold: var(--poster-cyan);
+                --ukm-navy: var(--poster-bg);
+                --ukm-ink: var(--poster-text);
+                --ukm-cream: var(--poster-bg-alt);
+                --ukm-soft: #0a0e21;
+                --ukm-border: var(--poster-line);
+                --primary-color: var(--poster-violet);
+                --secondary-color: var(--poster-violet-bright);
+                --heading-color: var(--poster-text);
+                --text-color: var(--poster-text-soft);
+                --gray-color: #0d1126;
+                --border-color: var(--poster-line);
+            }
+
+            body {
+                position: relative;
+                color: var(--poster-text-soft);
+                background:
+                    radial-gradient(circle at 14% 10%, rgba(144, 73, 255, 0.18), transparent 24%),
+                    radial-gradient(circle at 86% 18%, rgba(105, 220, 255, 0.12), transparent 20%),
+                    linear-gradient(180deg, #050814 0%, #090d1f 34%, #060812 100%);
+            }
+
+            body::before,
+            body::after {
+                position: fixed;
+                content: "";
+                pointer-events: none;
+                z-index: 0;
+                border-radius: 50%;
+                filter: blur(8px);
+            }
+
+            body::before {
+                top: -150px;
+                left: -140px;
+                width: 420px;
+                height: 420px;
+                background: radial-gradient(circle, rgba(144, 73, 255, 0.2) 0%, rgba(144, 73, 255, 0) 72%);
+            }
+
+            body::after {
+                top: 26%;
+                right: -120px;
+                width: 360px;
+                height: 360px;
+                background: radial-gradient(circle, rgba(105, 220, 255, 0.12) 0%, rgba(105, 220, 255, 0) 72%);
+            }
+
+            header,
+            main,
+            footer {
+                position: relative;
+                z-index: 1;
+            }
+
+            .header-one .header-navigation,
+            .header-one .header-navigation.sticky {
+                background: rgba(7, 10, 29, 0.74);
+                background-color: rgba(7, 10, 29, 0.74);
+                border: 1px solid rgba(177, 126, 255, 0.16);
+                box-shadow: 0 18px 44px rgba(2, 4, 16, 0.36);
+            }
+
+            .header-navigation .theme-nav-menu.menu-on,
+            .header-navigation .theme-nav-menu,
+            .header-navigation .theme-nav-menu .theme-menu-top {
+                border-color: rgba(177, 126, 255, 0.12);
+            }
+
+            .header-navigation .theme-nav-menu.menu-on,
+            .header-navigation .theme-nav-menu {
+                background: linear-gradient(180deg, rgba(16, 18, 47, 0.98) 0%, rgba(8, 10, 28, 0.98) 100%);
+            }
+
+            .header-navigation .main-menu ul > li > a:hover,
+            .header-navigation .main-menu ul > li > a.active,
+            .header-navigation .theme-nav-menu .main-menu ul li a:hover {
+                color: var(--poster-cyan);
+            }
+
+            .theme-btn.gradient-btn,
+            .orbia-pricing-item.style-one .pricing-inner-wrapper .pricing-button .theme-btn.gradient-btn {
+                background: linear-gradient(135deg, var(--poster-violet) 0%, var(--poster-violet-bright) 60%, var(--poster-cyan) 100%);
+                color: #fff;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                box-shadow: 0 18px 38px rgba(101, 40, 255, 0.3);
+            }
+
+            .theme-btn.gradient-btn:hover,
+            .orbia-pricing-item.style-one .pricing-inner-wrapper .pricing-button .theme-btn.gradient-btn:hover {
+                background: linear-gradient(135deg, #9a58ff 0%, #cf73ff 60%, #7fe6ff 100%);
+                color: #fff;
+            }
+
+            .orbia-pricing-item.style-one .pricing-inner-wrapper .pricing-button .theme-btn.gradient-btn::before {
+                background: transparent;
+            }
+
+            .theme-btn.style-two {
+                border-color: rgba(177, 126, 255, 0.34);
+                background: rgba(255, 255, 255, 0.04);
+            }
+
+            .theme-btn.style-two:hover {
+                border-color: var(--poster-cyan);
+                color: var(--poster-cyan);
+                background: rgba(105, 220, 255, 0.08);
+            }
+
+            .orbia-hero_one .hero-wrapper::before {
+                background:
+                    radial-gradient(circle at 18% 18%, rgba(105, 220, 255, 0.16), transparent 28%),
+                    radial-gradient(circle at 78% 72%, rgba(144, 73, 255, 0.2), transparent 24%),
+                    linear-gradient(120deg, rgba(6, 9, 24, 0.96) 10%, rgba(15, 18, 46, 0.9) 48%, rgba(67, 25, 124, 0.82) 100%);
+            }
+
+            .ukm-hero-kicker,
+            .ukm-meta-pill {
+                border-color: rgba(177, 126, 255, 0.22);
+                background: rgba(255, 255, 255, 0.06);
+            }
+
+            .ukm-program-highlights::before {
+                background:
+                    radial-gradient(circle at 20% 25%, rgba(144, 73, 255, 0.18), transparent 26%),
+                    radial-gradient(circle at 82% 70%, rgba(105, 220, 255, 0.1), transparent 24%);
+            }
+
+            .ukm-section-soft {
+                background: linear-gradient(180deg, rgba(10, 13, 33, 0.96) 0%, rgba(16, 18, 43, 0.98) 100%);
+            }
+
+            .orbia-project_one {
+                background: linear-gradient(180deg, rgba(8, 11, 29, 0.98) 0%, rgba(10, 13, 34, 0.98) 100%);
+            }
+
+            .orbia-pricing_one,
+            .orbia-contact_one,
+            .main-footer,
+            .main-footer .footer-bottom-wrapper {
+                background-image: none !important;
+            }
+
+            .orbia-pricing_one {
+                background: linear-gradient(180deg, rgba(13, 15, 42, 0.98) 0%, rgba(18, 16, 52, 0.98) 100%);
+            }
+
+            .orbia-advance-sec {
+                background: linear-gradient(180deg, rgba(8, 11, 28, 0.98) 0%, rgba(12, 14, 37, 0.98) 100%);
+            }
+
+            .orbia-blog_one {
+                background: linear-gradient(180deg, rgba(10, 12, 29, 0.98) 0%, rgba(12, 13, 33, 0.98) 100%);
+            }
+
+            .orbia-contact_one {
+                background: linear-gradient(180deg, rgba(13, 15, 40, 0.98) 0%, rgba(9, 11, 27, 0.98) 100%);
+            }
+
+            .ukm-cohost-section {
+                background: linear-gradient(180deg, rgba(8, 10, 25, 0.98) 0%, rgba(13, 14, 32, 0.98) 100%);
+            }
+
+            .section-title h2,
+            .orbia-content-box h2,
+            .ukm-agenda-item .project-title .title,
+            .ukm-agenda-card h4,
+            .ukm-check-card h5,
+            .ukm-speaker-card h4,
+            .ukm-snapshot-card h4,
+            .orbia-pricing-item.style-one .pricing-inner-wrapper .pricing-header h2,
+            .orbia-pricing-item.style-one .pricing-inner-wrapper .pricing-header .plan,
+            .footer-widget .widget-content .widget-title {
+                color: var(--poster-text);
+            }
+
+            .section-title .sub-title,
+            .ukm-agenda-item .project-title span,
+            .ukm-speaker-card .position,
+            .ukm-snapshot-card span,
+            .footer-widget .line-wrap span,
+            .ukm-cohost-section .sub-title {
+                color: var(--poster-cyan);
+            }
+
+            .section-title p,
+            .ukm-highlight-lead,
+            .orbia-service-card .content p,
+            .orbia-content-box p,
+            .ukm-agenda-card p,
+            .ukm-agenda-card ul,
+            .ukm-speaker-card p,
+            .orbia-pricing-item.style-one .pricing-inner-wrapper .pricing-header p,
+            .orbia-pricing-item.style-one .pricing-inner-wrapper .pricing-body .check-list li,
+            .ukm-snapshot-main p,
+            .ukm-snapshot-card p,
+            .footer-widget .widget-content p,
+            .footer-widget .widget-content .widget-nav li a,
+            .orbia-info-box.style-two .info p,
+            .ukm-cohost-card span,
+            .copyright-area .copyright-text p {
+                color: var(--poster-text-soft);
+            }
+
+            .orbia-service-card,
+            .ukm-agenda-item,
+            .ukm-agenda-card,
+            .ukm-check-card,
+            .ukm-speaker-card,
+            .ukm-cohost-card,
+            .ukm-snapshot-card {
+                background: linear-gradient(180deg, rgba(23, 22, 59, 0.88) 0%, rgba(12, 13, 34, 0.94) 100%);
+                border: 1px solid var(--poster-line);
+                box-shadow: 0 22px 55px rgba(2, 4, 16, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+                backdrop-filter: blur(16px);
+            }
+
+            .orbia-service-card.item-active,
+            .orbia-service-card:hover {
+                background: linear-gradient(180deg, rgba(30, 28, 72, 0.92) 0%, rgba(14, 15, 39, 0.98) 100%);
+                border-color: var(--poster-line-strong);
+                box-shadow: 0 24px 60px rgba(2, 4, 16, 0.4), 0 0 0 1px rgba(105, 220, 255, 0.08);
+                backdrop-filter: blur(16px);
+            }
+
+            .ukm-service-card {
+                background: linear-gradient(180deg, rgba(23, 22, 59, 0.92) 0%, rgba(12, 13, 34, 0.96) 100%);
+                border-color: var(--poster-line);
+            }
+
+            .ukm-service-card::before {
+                background: linear-gradient(90deg, var(--poster-violet), var(--poster-cyan));
+            }
+
+            .ukm-service-card .title a,
+            .orbia-service-card .content .title {
+                color: var(--poster-text);
+            }
+
+            .ukm-service-card .title a:hover {
+                color: var(--poster-cyan);
+            }
+
+            .ukm-service-card .icon,
+            .ukm-speaker-avatar,
+            .ukm-check-card i {
+                background: linear-gradient(135deg, rgba(144, 73, 255, 0.22), rgba(105, 220, 255, 0.16));
+                border: 1px solid rgba(177, 126, 255, 0.2);
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            }
+
+            .ukm-check-card i {
+                color: var(--poster-cyan);
+            }
+
+            .ukm-highlight-number,
+            .ukm-day-theme,
+            .ukm-time {
+                background: linear-gradient(135deg, rgba(144, 73, 255, 0.24), rgba(105, 220, 255, 0.14));
+                border: 1px solid rgba(177, 126, 255, 0.28);
+                color: var(--poster-text);
+                box-shadow: 0 12px 28px rgba(76, 38, 181, 0.18);
+            }
+
+            .ukm-insight-panel,
+            .ukm-snapshot-shell,
+            .main-footer .footer-bottom-wrapper {
+                background: linear-gradient(135deg, rgba(20, 18, 56, 0.96) 0%, rgba(8, 11, 30, 0.98) 100%);
+                border: 1px solid rgba(177, 126, 255, 0.22);
+                box-shadow: 0 28px 70px rgba(2, 4, 16, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            }
+
+            .ukm-insight-panel .stat {
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(177, 126, 255, 0.16);
+            }
+
+            .ukm-program-note {
+                background: linear-gradient(135deg, rgba(144, 73, 255, 0.16), rgba(105, 220, 255, 0.08));
+                border: 1px solid rgba(177, 126, 255, 0.18);
+            }
+
+            .orbia-pricing-item.style-one {
+                background: linear-gradient(135deg, rgba(144, 73, 255, 0.36), rgba(105, 220, 255, 0.14));
+                border: 0;
+                box-shadow: 0 24px 60px rgba(3, 4, 16, 0.35);
+            }
+
+            .orbia-pricing-item.style-one .pricing-inner-wrapper {
+                background: linear-gradient(180deg, rgba(23, 22, 59, 0.96) 0%, rgba(10, 12, 31, 0.98) 100%);
+                border: 1px solid rgba(177, 126, 255, 0.14);
+            }
+
+            .orbia-pricing-item.style-one .pricing-inner-wrapper .pricing-body .check-list li::before {
+                background-color: var(--poster-cyan);
+            }
+
+            .main-footer {
+                background: linear-gradient(180deg, #080a1b 0%, #05070f 100%);
+            }
+
+            .main-footer .shape {
+                display: none;
+            }
+
+            .footer-widget .line-wrap span {
+                background: linear-gradient(90deg, var(--poster-violet), var(--poster-cyan));
+            }
+
+            .footer-widget .widget-content .social-box a {
+                border-color: rgba(177, 126, 255, 0.32);
+                background: rgba(255, 255, 255, 0.03);
+            }
+
+            .footer-widget .widget-content .social-box a::after {
+                background: linear-gradient(135deg, var(--poster-violet), var(--poster-violet-bright) 60%, var(--poster-cyan));
+            }
+
+            .footer-widget .widget-content .widget-nav li a:hover,
+            .copyright-link a:hover {
+                color: var(--poster-cyan);
+                background: none;
+                -webkit-text-fill-color: var(--poster-cyan);
+            }
+
+            .orbia-info-box.style-two .icon {
+                background: linear-gradient(135deg, var(--poster-violet), var(--poster-cyan));
+            }
+
+            .copyright-area {
+                border-top: 1px solid rgba(177, 126, 255, 0.14);
+            }
+
+            .copyright-area .copyright-text p span {
+                background: linear-gradient(135deg, var(--poster-violet), var(--poster-cyan));
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
         </style>
     </head>
     <body>
@@ -1142,7 +1497,7 @@
                         </div>
                         <div class="nav-right-item">
                             <div class="nav-button d-none d-md-block">
-                                <a href="https://luma.com/AUAP_DigitalAI_Traning2026" target="_blank" class="theme-btn gradient-btn">Register Now<i class="far fa-arrow-right"></i></a>
+                                <a href="https://luma.com/AUAP_DigitalAI_Traning2026" target="_blank" rel="noopener noreferrer" class="theme-btn gradient-btn">Register Now<i class="far fa-arrow-right"></i></a>
                             </div>
                             <div class="navbar-toggler">
                                 <span></span>
@@ -1753,7 +2108,7 @@
                                                 </ul>
                                             </div>
                                             <div class="pricing-button">
-                                                <a href="https://luma.com/AUAP_DigitalAI_Traning2026" target="_blank" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
+                                                <a href="https://luma.com/AUAP_DigitalAI_Traning2026" target="_blank" rel="noopener noreferrer" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -1773,7 +2128,7 @@
                                                 </ul>
                                             </div>
                                             <div class="pricing-button">
-                                                <a href="https://luma.com/AUAP_DigitalAI_Traning2026" target="_blank" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
+                                                <a href="https://luma.com/AUAP_DigitalAI_Traning2026" target="_blank" rel="noopener noreferrer" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -1794,7 +2149,7 @@
                                                 </ul>
                                             </div>
                                             <div class="pricing-button">
-                                                <a href="https://luma.com/AUAP_DigitalAI_Traning2026" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
+                                                <a href="https://luma.com/AUAP_DigitalAI_Traning2026" target="_blank" rel="noopener noreferrer" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
                                             </div>
                                         </div>
                                     </div> -->
@@ -1814,7 +2169,7 @@
                                                 </ul>
                                             </div>
                                             <div class="pricing-button">
-                                                <a href="https://luma.com/AUAP_DigitalAI_Traning2026" target="_blank" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
+                                                <a href="https://luma.com/AUAP_DigitalAI_Traning2026" target="_blank" rel="noopener noreferrer" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -1844,7 +2199,7 @@
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1200">
                                     <div class="ukm-speaker-card">
-                                        <div class="ukm-speaker-avatar"><img src="../assets/images/DrImages/DrNorazah.png" alt="Prof. Dato' Dr. Ts. Norazah Mohd Nordin"></div>
+                                        <div class="ukm-speaker-avatar"><img src="assets/images/DrImages/DrNorazah.png" alt="Prof. Dato' Dr. Ts. Norazah Mohd Nordin"></div>
                                         <h4>Prof. Dato' Dr. Ts. Norazah Mohd Nordin</h4>
                                         <span class="position">Universiti Kebangsaan Malaysia</span>
                                         <p>Director, Center for International Strategic Negotiations and Sustainable Development Goals, and chair of the AUAP country committee.</p>
