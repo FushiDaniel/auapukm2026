@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="assets/css/plugins/aos.css">
         <link rel="stylesheet" href="assets/css/spacings.css">
         <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous"/>
         <style>
             :root {
                 --ukm-maroon: #8c1538;
@@ -1446,6 +1447,238 @@
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
             }
+
+            /* ── Accommodation / Hotels Section ──────────────────────────── */
+            .ukm-hotel-section {
+                background: transparent;
+            }
+
+            .ukm-hotel-section .section-title p {
+                max-width: 680px;
+                margin-left: auto;
+                margin-right: auto;
+                color: var(--poster-text-soft);
+                font-size: 16px;
+                line-height: 1.7;
+            }
+
+            .ukm-hotel-map-wrapper {
+                border-radius: 24px;
+                overflow: hidden;
+                box-shadow: 0 8px 40px rgba(3, 4, 16, 0.5);
+                border: 1px solid var(--poster-line);
+            }
+
+            .ukm-hotel-map-wrapper iframe {
+                display: block;
+                width: 100%;
+            }
+
+            .ukm-hotel-grid {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 24px;
+            }
+
+            .ukm-hotel-card {
+                background: linear-gradient(135deg, rgba(144, 73, 255, 0.18), rgba(105, 220, 255, 0.06));
+                border-radius: 24px;
+                border: 1px solid var(--poster-line);
+                padding: 28px 24px 24px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+            }
+
+            .ukm-hotel-card:hover {
+                box-shadow: 0 20px 56px rgba(144, 73, 255, 0.22);
+                border-color: var(--poster-line-strong);
+                transform: translateY(-4px);
+            }
+
+            .ukm-hotel-card-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                font-size: 11px;
+                font-weight: 700;
+                letter-spacing: 0.07em;
+                text-transform: uppercase;
+                padding: 4px 12px;
+                border-radius: 100px;
+                width: fit-content;
+            }
+
+            .ukm-hotel-card-badge.budget {
+                background: rgba(105, 220, 255, 0.14);
+                color: var(--poster-cyan);
+            }
+
+            .ukm-hotel-card-badge.mid {
+                background: rgba(144, 73, 255, 0.18);
+                color: var(--poster-violet-bright);
+            }
+
+            .ukm-hotel-card-badge.premium {
+                background: rgba(191, 99, 255, 0.18);
+                color: var(--poster-violet-bright);
+            }
+
+            .ukm-hotel-card h4 {
+                font-size: 16px;
+                font-weight: 700;
+                color: var(--poster-text);
+                margin: 0;
+                line-height: 1.35;
+            }
+
+            .ukm-hotel-stars {
+                color: var(--poster-cyan);
+                font-size: 13px;
+                letter-spacing: 2px;
+            }
+
+            .ukm-hotel-meta {
+                display: flex;
+                flex-direction: column;
+                gap: 7px;
+                margin-top: 2px;
+            }
+
+            .ukm-hotel-meta-row {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 13px;
+                color: var(--poster-text-soft);
+            }
+
+            .ukm-hotel-meta-row i {
+                color: var(--poster-cyan);
+                width: 14px;
+                text-align: center;
+                flex-shrink: 0;
+            }
+
+            .ukm-hotel-price {
+                margin-top: auto;
+                padding-top: 16px;
+                border-top: 1px solid var(--poster-line);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+
+            .ukm-hotel-price-label {
+                color: var(--poster-text-soft);
+                font-size: 11px;
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                margin-bottom: 3px;
+            }
+
+            .ukm-hotel-price-value {
+                font-size: 22px;
+                font-weight: 800;
+                color: var(--poster-cyan);
+                line-height: 1;
+            }
+
+            .ukm-hotel-price-value small {
+                font-size: 12px;
+                font-weight: 500;
+                color: var(--poster-text-soft);
+            }
+
+            .ukm-hotel-book-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 7px;
+                padding: 10px 18px;
+                background: linear-gradient(135deg, var(--poster-violet) 0%, var(--poster-violet-bright) 60%, var(--poster-cyan) 100%);
+                color: #fff !important;
+                border-radius: 100px;
+                font-size: 13px;
+                font-weight: 600;
+                text-decoration: none;
+                white-space: nowrap;
+                transition: opacity 0.2s ease;
+            }
+
+            .ukm-hotel-book-btn:hover {
+                opacity: 0.88;
+            }
+
+            .ukm-hotel-disclaimer {
+                margin-top: 36px;
+                text-align: center;
+                color: var(--poster-text-soft);
+                font-size: 13px;
+                line-height: 1.7;
+            }
+
+            /* Leaflet dark-theme popup overrides */
+            .leaflet-popup-content-wrapper {
+                background: rgba(18, 16, 50, 0.97);
+                color: var(--poster-text);
+                border: 1px solid var(--poster-line-strong);
+                border-radius: 12px;
+                box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+                padding: 2px;
+            }
+
+            .leaflet-popup-content {
+                margin: 12px 16px;
+                font-family: 'DM Sans', sans-serif;
+                font-size: 13px;
+                line-height: 1.6;
+                color: var(--poster-text);
+            }
+
+            .leaflet-popup-content b {
+                color: var(--poster-text);
+                font-size: 14px;
+            }
+
+            .leaflet-popup-content small {
+                color: var(--poster-text-soft);
+            }
+
+            .leaflet-popup-tip {
+                background: rgba(18, 16, 50, 0.97);
+            }
+
+            .leaflet-popup-close-button {
+                color: var(--poster-text-soft) !important;
+                font-size: 18px !important;
+                top: 6px !important;
+                right: 8px !important;
+            }
+
+            .leaflet-popup-close-button:hover {
+                color: var(--poster-text) !important;
+            }
+
+            .leaflet-container {
+                font-family: 'DM Sans', sans-serif;
+            }
+
+            @media (max-width: 1199px) {
+                .ukm-hotel-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+            }
+
+            @media (max-width: 575px) {
+                .ukm-hotel-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
         </style>
     </head>
     <body>
@@ -1489,6 +1722,7 @@
                                     <li class="menu-item"><a href="#speakers">Speakers</a></li>
                                     <li class="menu-item"><a href="#highlights">Highlights</a></li>
                                     <li class="menu-item"><a href="#snapshot">Snapshot</a></li>
+                                    <li class="menu-item"><a href="#accommodation">Hotels</a></li>
                                 </ul>
                             </nav>
                             <div class="theme-nav-button mt-20 d-block d-md-none">
@@ -2100,8 +2334,7 @@
                                         <div class="pricing-inner-wrapper">
                                             <div class="pricing-header">
                                                 <span class="plan">Students</span>
-                                                <h2 class="price">$75 USD = 350 MYR</h2>
-                                                <p>AUAP member rate. Non-member rate: $100 USD = 400 MYR</p>
+                                                <h2 class="price">Free</h2>
                                             </div>
                                             <div class="pricing-body">
                                                 <ul class="check-list style-two">
@@ -2120,8 +2353,7 @@
                                         <div class="pricing-inner-wrapper">
                                             <div class="pricing-header">
                                                 <span class="plan">Professionals</span>
-                                                <h2 class="price">$150 = 600 MYR</h2>
-                                                <p>AUAP member rate. Non-member rate: $220 USD = 900 MYR</p>
+                                                <h2 class="price">Free</h2>
                                             </div>
                                             <div class="pricing-body">
                                                 <ul class="check-list style-two">
@@ -2157,26 +2389,6 @@
                                             </div>
                                         </div>
                                     </div> -->
-                                    <div class="orbia-pricing-item style-one mb-30" data-aos="fade-up" data-aos-duration="1400">
-                                        <div class="pricing-inner-wrapper">
-                                            <div class="pricing-header">
-                                                <span class="plan">Optional Excursion</span>
-                                                <h2 class="price">$150</h2>
-                                                <p>Kuala Lumpur excursion add-on at $150 USD per pax.</p>
-                                            </div>
-                                            <div class="pricing-body">
-                                                <ul class="check-list style-two">
-                                                    <li>KLCC Twin Tower visit</li>
-                                                    <li>Central Market stop</li>
-                                                    <li>Beryl's Factory visit</li>
-                                                    <li>Lunch and informal networking</li>
-                                                </ul>
-                                            </div>
-                                            <div class="pricing-button">
-                                                <a href="https://luma.com/AUAP_DigitalAI_Traning2026" target="_blank" rel="noopener noreferrer" class="theme-btn gradient-btn"><span>Register Now<i class="far fa-arrow-right"></i></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2392,6 +2604,7 @@
                             </div>
                         </div>
                     </section>
+
                 </main>
 
                 <footer class="main-footer bg_cover" data-src="assets/images/footer/footer-bg.jpg">
@@ -2477,14 +2690,6 @@
                                                         <p>29 June 2026 to 1 July 2026</p>
                                                     </div>
                                                 </div>
-                                                <div class="orbia-info-box style-two mb-20">
-                                                    <div class="icon">
-                                                        <i class="fas fa-plane-departure"></i>
-                                                    </div>
-                                                    <div class="info">
-                                                        <p>Optional KL excursion at $150 USD per pax</p>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -2519,5 +2724,56 @@
         <script src="assets/js/plugins/gsap/ScrollTrigger.min.js"></script>
         <script src="assets/js/plugins/aos.js"></script>
         <script src="assets/js/theme.js"></script>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
+        <script>
+            window.addEventListener('load', function () {
+                var mapEl = document.getElementById('ukm-hotel-map');
+                if (!mapEl || typeof L === 'undefined') return;
+
+                var map = L.map('ukm-hotel-map', {
+                    center: [3.0982, 101.7257],
+                    zoom: 13,
+                    scrollWheelZoom: false,
+                    zoomAnimation: false
+                });
+
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',
+                    subdomains: 'abcd',
+                    maxZoom: 19
+                }).addTo(map);
+
+                function pin(bg, label) {
+                    return L.divIcon({
+                        className: '',
+                        html: '<div style="width:34px;height:34px;border-radius:50%;background:' + bg + ';display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:14px;box-shadow:0 3px 12px rgba(0,0,0,0.55);border:2px solid rgba(255,255,255,0.3);">' + label + '</div>',
+                        iconSize: [34, 34],
+                        iconAnchor: [17, 17],
+                        popupAnchor: [0, -20]
+                    });
+                }
+
+                var points = [
+                    { lat: 3.0982, lng: 101.7257, bg: '#ff4060', label: '★',
+                      popup: '<b>★ Zecon Hotel (HPKK)</b><br><span style="color:#69dcff">At event venue — HCTM campus</span><br><small>Jalan Yaacob Latif, Bandar Tun Razak</small><br><small>From <b>RM 130</b>/night</small>' },
+                    { lat: 3.0735, lng: 101.7272, bg: '#9049ff', label: '2',
+                      popup: '<b>2 — Silka Cheras KL</b><br><small>~3.5 km from venue</small><br><small>From <b>RM 160</b>/night</small>' },
+                    { lat: 3.0676, lng: 101.7302, bg: '#9049ff', label: '3',
+                      popup: '<b>3 — Vivatel Kuala Lumpur</b><br><small>~4 km from venue</small><br><small>From <b>RM 269</b>/night</small>' },
+                    { lat: 3.0598, lng: 101.7362, bg: '#bf63ff', label: '4',
+                      popup: '<b>4 — Le Quadri Hotel</b><br><small>~5 km from venue</small><br><small>From <b>RM 424</b>/night</small>' }
+                ];
+
+                points.forEach(function (v) {
+                    L.marker([v.lat, v.lng], { icon: pin(v.bg, v.label) })
+                        .addTo(map)
+                        .bindPopup(v.popup);
+                });
+
+                /* Force Leaflet to recalculate container size after
+                   GSAP ScrollSmoother has finished setting up transforms */
+                setTimeout(function () { map.invalidateSize(); }, 400);
+            });
+        </script>
     </body>
 </html>
