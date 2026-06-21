@@ -1679,6 +1679,135 @@
                 }
             }
 
+            /* ── UKM Rates Section ──────────────────────────────────── */
+            .ukm-rates-section {
+                background: transparent;
+            }
+
+            .ukm-rates-section .section-title p {
+                max-width: 680px;
+                margin-left: auto;
+                margin-right: auto;
+                color: var(--poster-text-soft);
+                font-size: 16px;
+                line-height: 1.7;
+            }
+
+            .ukm-rates-intro {
+                padding: 24px;
+                border-radius: 24px;
+                background: linear-gradient(135deg, rgba(144, 73, 255, 0.12), rgba(105, 220, 255, 0.06));
+                border: 1px solid var(--poster-line);
+                margin-bottom: 36px;
+                text-align: center;
+            }
+
+            .ukm-rates-intro p {
+                margin: 0;
+                color: var(--poster-text-soft);
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+            .ukm-rates-intro strong {
+                color: var(--poster-text);
+                font-weight: 700;
+            }
+
+            .ukm-rates-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 24px;
+                margin-bottom: 36px;
+            }
+
+            .ukm-rate-card {
+                background: linear-gradient(135deg, rgba(144, 73, 255, 0.18), rgba(105, 220, 255, 0.06));
+                border-radius: 24px;
+                border: 1px solid var(--poster-line);
+                padding: 32px 28px 28px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+                text-align: center;
+            }
+
+            .ukm-rate-card:hover {
+                box-shadow: 0 20px 56px rgba(144, 73, 255, 0.22);
+                border-color: var(--poster-line-strong);
+                transform: translateY(-4px);
+            }
+
+            .ukm-rate-card h4 {
+                font-size: 18px;
+                font-weight: 700;
+                color: var(--poster-text);
+                margin: 0;
+                line-height: 1.35;
+            }
+
+            .ukm-rate-value {
+                font-size: 32px;
+                font-weight: 800;
+                color: var(--poster-cyan);
+                line-height: 1;
+                margin: 6px 0 0;
+            }
+
+            .ukm-rate-label {
+                font-size: 12px;
+                font-weight: 600;
+                color: var(--poster-text-soft);
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                margin-top: 8px;
+            }
+
+            .ukm-rates-disclaimer {
+                background: linear-gradient(135deg, rgba(144, 73, 255, 0.16), rgba(105, 220, 255, 0.08));
+                border-radius: 24px;
+                border: 1px solid var(--poster-line);
+                padding: 28px;
+                text-align: center;
+            }
+
+            .ukm-rates-disclaimer p {
+                margin: 0;
+                color: var(--poster-text-soft);
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            .ukm-rates-disclaimer strong {
+                color: var(--poster-text);
+                font-weight: 700;
+            }
+
+            @media (max-width: 1199px) {
+                .ukm-rates-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+            }
+
+            @media (max-width: 575px) {
+                .ukm-rates-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .ukm-rate-card {
+                    padding: 24px 20px;
+                }
+
+                .ukm-rate-card h4 {
+                    font-size: 16px;
+                }
+
+                .ukm-rate-value {
+                    font-size: 28px;
+                }
+            }
+
         </style>
     </head>
     <body>
@@ -1722,7 +1851,7 @@
                                     <li class="menu-item"><a href="#speakers">Speakers</a></li>
                                     <li class="menu-item"><a href="#highlights">Highlights</a></li>
                                     <li class="menu-item"><a href="#snapshot">Snapshot</a></li>
-                                    <li class="menu-item"><a href="#accommodation">Hotels</a></li>
+                                    <li class="menu-item"><a href="#rates">UKM Rates</a></li>
                                 </ul>
                             </nav>
                             <div class="theme-nav-button mt-20 d-block d-md-none">
@@ -2586,6 +2715,64 @@
                         </div>
                     </section>
 
+                    <section class="ukm-rates-section pt-115 pb-120" id="rates">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-xl-8 col-lg-10">
+                                    <div class="section-title text-center mb-55">
+                                        <span class="sub-title" data-aos="fade-down" data-aos-duration="1000">UKM Special Rates</span>
+                                        <h2 class="text-anm">Accommodation Rates for UKM Staff &amp; Students</h2>
+                                        <p data-aos="fade-up" data-aos-duration="1200">Specially negotiated rates for university staff and students attending the AUAP Digital &amp; AI Transformation Program. Limited to 54 rooms only.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-xl-11">
+                                    <div class="ukm-rates-intro" data-aos="fade-up" data-aos-duration="1000">
+                                        <p><strong>Exclusive Group Rates Available</strong><br>Contact the program organizers to arrange your booking using the group rate code.</p>
+                                    </div>
+
+                                    <div class="ukm-rates-grid">
+                                        <div class="ukm-rate-card" data-aos="fade-up" data-aos-duration="1000">
+                                            <h4>Studio Suite</h4>
+                                            <div class="ukm-rate-value">RM180</div>
+                                            <div class="ukm-rate-label">Per Night</div>
+                                        </div>
+                                        <div class="ukm-rate-card" data-aos="fade-up" data-aos-duration="1100">
+                                            <h4>Junior Suite</h4>
+                                            <div class="ukm-rate-value">RM200</div>
+                                            <div class="ukm-rate-label">Per Night</div>
+                                        </div>
+                                        <div class="ukm-rate-card" data-aos="fade-up" data-aos-duration="1200">
+                                            <h4>Executive Suite</h4>
+                                            <div class="ukm-rate-value">RM220</div>
+                                            <div class="ukm-rate-label">Per Night</div>
+                                        </div>
+                                        <div class="ukm-rate-card" data-aos="fade-up" data-aos-duration="1300">
+                                            <h4>Family Suite</h4>
+                                            <div class="ukm-rate-value">RM260</div>
+                                            <div class="ukm-rate-label">Per Night</div>
+                                        </div>
+                                        <div class="ukm-rate-card" data-aos="fade-up" data-aos-duration="1400">
+                                            <h4>Penthouse</h4>
+                                            <div class="ukm-rate-value">RM370</div>
+                                            <div class="ukm-rate-label">Per Night</div>
+                                        </div>
+                                        <div class="ukm-rate-card" data-aos="fade-up" data-aos-duration="1500" style="background: linear-gradient(135deg, rgba(105, 220, 255, 0.12), rgba(105, 220, 255, 0.06)); border-color: rgba(105, 220, 255, 0.3);">
+                                            <h4>Total Availability</h4>
+                                            <div class="ukm-rate-value">54</div>
+                                            <div class="ukm-rate-label">Rooms Only</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ukm-rates-disclaimer" data-aos="fade-up" data-aos-duration="1200">
+                                        <p><strong>Important:</strong> These exclusive rates are available exclusively for UKM staff and registered students. Rooms are limited to 54 in total, so early booking is strongly recommended. For group reservations and booking details, please contact the program organizers or Zecon Hotel Kuala Lumpur directly with your UKM staff/student verification.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
                     <section class="ukm-cohost-section">
                         <div class="container">
                             <div class="ukm-cohost-shell" data-aos="fade-up" data-aos-duration="1000">
@@ -2648,6 +2835,7 @@
                                                             <li><a href="#speakers">Speakers</a></li>
                                                             <li><a href="#highlights">Highlights</a></li>
                                                             <li><a href="#snapshot">Event Snapshot</a></li>
+                                                            <li><a href="#rates">UKM Rates</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
