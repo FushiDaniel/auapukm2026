@@ -1784,6 +1784,54 @@
                 font-weight: 700;
             }
 
+            .ukm-rates-actions {
+                display: flex;
+                gap: 16px;
+                justify-content: center;
+                margin-top: 32px;
+                flex-wrap: wrap;
+            }
+
+            .ukm-rates-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                padding: 14px 32px;
+                border-radius: 100px;
+                font-size: 14px;
+                font-weight: 700;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                text-decoration: none;
+                transition: all 0.25s ease;
+                white-space: nowrap;
+                border: none;
+                cursor: pointer;
+            }
+
+            .ukm-rates-btn.primary {
+                background: linear-gradient(135deg, var(--poster-violet) 0%, var(--poster-violet-bright) 60%, var(--poster-cyan) 100%);
+                color: #fff;
+                box-shadow: 0 12px 28px rgba(144, 73, 255, 0.3);
+            }
+
+            .ukm-rates-btn.primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 16px 36px rgba(144, 73, 255, 0.4);
+            }
+
+            .ukm-rates-btn.secondary {
+                background: rgba(105, 220, 255, 0.12);
+                color: var(--poster-cyan);
+                border: 1.5px solid var(--poster-cyan);
+            }
+
+            .ukm-rates-btn.secondary:hover {
+                background: rgba(105, 220, 255, 0.2);
+                color: #fff;
+                transform: translateY(-2px);
+            }
+
             @media (max-width: 1199px) {
                 .ukm-rates-grid {
                     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2767,6 +2815,14 @@
 
                                     <div class="ukm-rates-disclaimer" data-aos="fade-up" data-aos-duration="1200">
                                         <p><strong>Important:</strong> These exclusive rates are available exclusively for UKM staff and registered students. Rooms are limited to 54 in total, so early booking is strongly recommended. For group reservations and booking details, please contact the program organizers or Zecon Hotel Kuala Lumpur directly with your UKM staff/student verification.</p>
+                                        <div class="ukm-rates-actions">
+                                            <a href="https://www.zeconhotel.com/en/reservation" target="_blank" rel="noopener noreferrer" class="ukm-rates-btn primary">
+                                                <i class="fas fa-calendar-check"></i>Book Now at Zecon
+                                            </a>
+                                            <a href="https://www.zeconhotel.com/en/contactus" target="_blank" rel="noopener noreferrer" class="ukm-rates-btn secondary">
+                                                <i class="far fa-envelope"></i>Contact for UKM Rates
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
