@@ -184,56 +184,10 @@
         }
     });
 
-    // Gsap SplitText
-
-    if (useDesktopMotion && $('.text-anm').length) {
-		let staggerAmount = 0.01,
-			translateXValue = 40,
-			delayValue = .5,
-			easeType = "power2.out",
-			animatedTextElements = document.querySelectorAll('.text-anm');
-
-		// Safety net: guarantee text is readable even if SplitText/ScrollTrigger
-		// never fires (e.g. a font-load or layout-shift race), instead of
-		// leaving headings permanently invisible. SplitText's own char/word
-		// nodes (not just the wrapper) are what gsap.from() actually hides,
-		// so they need to be reset too.
-		setTimeout(function () {
-			gsap.set('.text-anm', { autoAlpha: 1, x: 0 });
-			gsap.set('.text-anm *', { autoAlpha: 1, x: 0 });
-		}, 2500);
-
-		var runSplitTextAnimations = function () {
-			animatedTextElements.forEach((element) => {
-				let animationSplitText = new SplitText(element, {
-					type: "chars, words"
-				});
-				gsap.from(animationSplitText.chars, {
-					duration: 1,
-					delay: delayValue,
-					x: translateXValue,
-					autoAlpha: 0,
-					stagger: staggerAmount,
-					ease: easeType,
-					scrollTrigger: {
-						trigger: element,
-						start: "top 85%"
-					},
-				});
-			});
-			if (window.ScrollTrigger) {
-				window.ScrollTrigger.refresh();
-			}
-		};
-
-		// SplitText mis-measures characters if run before the webfont has
-		// swapped in, so wait for fonts to be ready first.
-		if (document.fonts && document.fonts.ready) {
-			document.fonts.ready.then(runSplitTextAnimations);
-		} else {
-			runSplitTextAnimations();
-		}
-	}
+    // Gsap SplitText disabled: the char-reveal animation relied on a
+    // scroll-trigger + font-load race that repeatedly left headings
+    // permanently invisible on first load. Not worth the risk — headings
+    // just render normally now.
     //===== Dynamic Background
 
     function dynamicBackground() {
