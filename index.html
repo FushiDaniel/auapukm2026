@@ -790,6 +790,27 @@
                 color: var(--tl-color, var(--ukm-gold));
             }
 
+            .ukm-vtimeline-card .tl-poster-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                margin-top: 12px;
+                padding: 7px 14px;
+                border-radius: 999px;
+                font-size: 12.5px;
+                font-weight: 700;
+                color: #08172f;
+                background: #f0f3fa;
+                border: 1px solid rgba(9, 24, 49, 0.15);
+                transition: all 0.25s ease;
+            }
+
+            .ukm-vtimeline-card .tl-poster-link:hover {
+                background: #FFD100;
+                color: #08172f;
+                border-color: #FFD100;
+            }
+
             .ukm-vtimeline-card h4 {
                 margin-bottom: 8px;
                 font-size: 19px;
@@ -1277,8 +1298,9 @@
 
             /* Role / partner text cards — no logo files required */
             .ukm-role-grid {
-                display: grid;
-                grid-template-columns: repeat(5, minmax(0, 1fr));
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
                 gap: 20px;
                 margin-top: 34px;
             }
@@ -1292,6 +1314,7 @@
                 justify-content: center;
                 min-width: 0;
                 overflow: hidden;
+                flex: 0 1 200px;
             }
 
             .ukm-role-card .badge-mark {
@@ -2211,10 +2234,6 @@
                 .ukm-rates-grid {
                     grid-template-columns: repeat(2, minmax(0, 1fr));
                 }
-
-                .ukm-role-grid {
-                    grid-template-columns: repeat(3, minmax(0, 1fr));
-                }
             }
 
             @media (max-width: 575px) {
@@ -2222,8 +2241,8 @@
                     grid-template-columns: 1fr;
                 }
 
-                .ukm-role-grid {
-                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                .ukm-role-card {
+                    flex-basis: 140px;
                 }
 
                 .ukm-rate-card {
@@ -2399,6 +2418,25 @@
                         </div>
                     </section>
 
+                    <section class="ukm-poster-section" id="poster">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-xl-8 col-lg-10">
+                                    <div class="section-title text-center mb-0">
+                                        <span class="sub-title" data-aos="fade-down" data-aos-duration="1000">Poster Rasmi</span>
+                                        <h2 class="text-anm">Poster AI Muda@NADI 2026</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ukm-poster-frame" data-aos="fade-up" data-aos-duration="1000">
+                                <img src="assets/images/poster/poster-ai-muda-nadi.jpg" alt="Poster rasmi AI Muda@NADI 2026 &mdash; program AI untuk murid Tingkatan 1 hingga Tingkatan 6, anjuran MCMC, CelcomDigi dan UKM, disokong Kementerian Pendidikan Malaysia">
+                            </div>
+                            <div class="ukm-poster-actions">
+                                <a href="assets/images/poster/poster-ai-muda-nadi.jpg" download class="theme-btn style-two"><i class="far fa-download"></i>Muat Turun Poster</a>
+                            </div>
+                        </div>
+                    </section>
+
                     <section class="animated-text-slide ukm-event-strip">
                         <div class="oriba-scroll-text scroll-left">
                             <span class="scroll-text-inner">
@@ -2557,6 +2595,7 @@
                                                 <span class="tl-date" style="--tl-color:#00AEEF;">24 Ogos 2026 (Isnin) &middot; 3.00 petang</span>
                                                 <h4>Modul 1: Jelajah AI</h4>
                                                 <p>Kenali Dunia Pintar &mdash; pengenalan kepada AI dan aktiviti penerokaan mudah.</p>
+                                                <a href="assets/images/poster/poster-taklimat-modul1.jpg" target="_blank" rel="noopener noreferrer" class="tl-poster-link"><i class="far fa-image"></i>Lihat Poster</a>
                                             </div>
                                         </div>
                                         <div class="ukm-vtimeline-item">
@@ -2803,9 +2842,6 @@
                                     <div class="ukm-role-card" data-aos="fade-up" data-aos-duration="900">
                                         <div class="badge-mark"><img src="assets/images/partners/mcmc.png" alt="Logo MCMC"></div>
                                     </div>
-                                    <div class="ukm-role-card" data-aos="fade-up" data-aos-duration="1000">
-                                        <div class="badge-mark"><img src="assets/images/partners/nadi.png" alt="Logo NADI"></div>
-                                    </div>
                                     <div class="ukm-role-card" data-aos="fade-up" data-aos-duration="1100">
                                         <div class="badge-mark"><img src="assets/images/partners/celcomdigi.png" alt="Logo CelcomDigi"></div>
                                     </div>
@@ -2867,25 +2903,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="ukm-poster-section" id="poster">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-xl-8 col-lg-10">
-                                    <div class="section-title text-center mb-0">
-                                        <span class="sub-title" data-aos="fade-down" data-aos-duration="1000">Poster Rasmi</span>
-                                        <h2 class="text-anm">Poster AI Muda@NADI 2026</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ukm-poster-frame" data-aos="fade-up" data-aos-duration="1000">
-                                <img src="assets/images/poster/poster-ai-muda-nadi.jpg" alt="Poster rasmi AI Muda@NADI 2026 &mdash; program AI untuk murid Tingkatan 1 hingga Tingkatan 6, anjuran MCMC, CelcomDigi dan UKM, disokong Kementerian Pendidikan Malaysia">
-                            </div>
-                            <div class="ukm-poster-actions">
-                                <a href="assets/images/poster/poster-ai-muda-nadi.jpg" download class="theme-btn style-two"><i class="far fa-download"></i>Muat Turun Poster</a>
                             </div>
                         </div>
                     </section>
