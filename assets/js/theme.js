@@ -94,6 +94,8 @@
             const header = $(headerSelector);
             let lastScroll = 0;
             const updateStickyState = () => {
+                if (document.body.classList.contains('modal-open')) return;
+
                 const currentScroll = $(window).scrollTop();
                 const isMobileMenuViewport = window.matchMedia("(max-width: 1199.98px)").matches;
                 const stickyStart = 40;
@@ -121,6 +123,15 @@
             updateStickyState();
         }
         initStickyHeader('.header-navigation');
+
+        // Hide the sticky header while any modal is open, and let it
+        // recompute its correct state once the modal closes.
+        $(document).on('show.bs.modal', '.modal', function() {
+            $('.header-navigation').addClass('header-hidden');
+        });
+        $(document).on('hidden.bs.modal', '.modal', function() {
+            $(window).trigger('scroll');
+        });
     });
 
     //===== Gasp 
@@ -139,6 +150,33 @@
     effects: true,
         smoothTouch: 0,
     }) : null;
+
+    // Pause ScrollSmoother while a Bootstrap modal is open so scrolling
+    // inside the modal doesn't also scroll the page behind it.
+    if (smoother) {
+        $(document).on('show.bs.modal', '.modal', function() {
+            smoother.paused(true);
+        });
+        $(document).on('hidden.bs.modal', '.modal', function() {
+            smoother.paused(false);
+        });
+    }
+
+    // Fade the "scroll for details" hint once the modal body is scrolled to its end.
+    $(document).on('shown.bs.modal', '.ukm-modul-modal', function() {
+        const $body = $(this).find('.modal-body');
+        const $hint = $(this).find('.ukm-modul-modal-scroll-hint');
+        if (!$body.length || !$hint.length) return;
+
+        function updateHint() {
+            const el = $body[0];
+            const atBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 4;
+            $hint.toggleClass('is-at-bottom', atBottom);
+        }
+
+        $body.off('scroll.ukmModalHint').on('scroll.ukmModalHint', updateHint);
+        updateHint();
+    });
 
     // One-page anchor navigation
 
