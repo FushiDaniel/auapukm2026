@@ -50,23 +50,23 @@
                 backdrop-filter: blur(14px);
             }
 
-            @media (min-width: 1200px) {
-                .header-navigation {
-                    will-change: transform;
-                    transition: transform 0.25s ease, background 0.25s ease, backdrop-filter 0.25s ease;
-                }
+            .header-navigation {
+                will-change: transform;
+                transition: transform 0.25s ease, background 0.25s ease, backdrop-filter 0.25s ease;
+            }
 
+            .header-navigation.sticky {
+                transform: translateY(0);
+            }
+
+            .header-navigation.sticky.header-hidden {
+                transform: translateY(-100%);
+            }
+
+            @media (min-width: 1200px) {
                 .header-navigation .primary-menu {
                     padding-top: 10px;
                     padding-bottom: 10px;
-                }
-
-                .header-navigation.sticky {
-                    transform: translateY(0);
-                }
-
-                .header-navigation.sticky.header-hidden {
-                    transform: translateY(-100%);
                 }
 
                 .header-navigation .theme-nav-menu {
