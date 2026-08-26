@@ -354,6 +354,29 @@
                 display: block;
             }
 
+            .ukm-hero-poster-frame {
+                max-width: 380px;
+                margin: 40px auto 0;
+                padding: 14px;
+                border-radius: 28px;
+                background: linear-gradient(160deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
+                border: 1px solid rgba(255, 209, 0, 0.28);
+                box-shadow: 0 30px 70px rgba(2, 6, 20, 0.45);
+            }
+
+            .ukm-hero-poster-frame img {
+                display: block;
+                width: 100%;
+                height: auto;
+                border-radius: 18px;
+            }
+
+            @media (min-width: 1200px) {
+                .ukm-hero-poster-frame {
+                    margin: 0;
+                }
+            }
+
             .ukm-hero-orbit {
                 position: absolute;
                 display: inline-flex;
@@ -1121,6 +1144,13 @@
                 margin: 0 auto;
             }
 
+            .ukm-elig-divider {
+                max-width: 940px;
+                height: 1px;
+                margin: 60px auto;
+                background: linear-gradient(90deg, transparent, var(--ukm-border) 20%, var(--ukm-border) 80%, transparent);
+            }
+
             .ukm-elig-item {
                 display: flex;
                 align-items: flex-start;
@@ -1272,6 +1302,114 @@
                 margin: 0;
                 font-size: 14.5px;
                 line-height: 1.65;
+            }
+
+            .ukm-module-card .mod-video-preview {
+                position: relative;
+                display: block;
+                margin: 16px 0 4px;
+                border-radius: 14px;
+                overflow: hidden;
+                line-height: 0;
+            }
+
+            .ukm-module-card .mod-video-preview img {
+                display: block;
+                width: 100%;
+                height: auto;
+                aspect-ratio: 16 / 9;
+                object-fit: cover;
+            }
+
+            .ukm-module-card .mod-video-preview .mod-video-play {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(6, 10, 24, 0.32);
+                transition: background 0.25s ease;
+            }
+
+            .ukm-module-card .mod-video-preview:hover .mod-video-play {
+                background: rgba(6, 10, 24, 0.15);
+            }
+
+            .ukm-module-card .mod-video-play i {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 46px;
+                height: 46px;
+                border-radius: 50%;
+                background: var(--mod-color, var(--ukm-gold));
+                color: #08172f;
+                font-size: 16px;
+                box-shadow: 0 10px 24px rgba(2, 4, 16, 0.4);
+            }
+
+            .ukm-module-card .mod-actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 14px;
+            }
+
+            .ukm-module-card .mod-video-pending {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                margin: 16px 0 4px;
+                padding: 20px 16px;
+                aspect-ratio: 16 / 9;
+                border-radius: 14px;
+                border: 1.5px dashed var(--ukm-border);
+                text-align: center;
+            }
+
+            .ukm-module-card .mod-video-pending i {
+                font-size: 19px;
+                color: var(--mod-color, var(--ukm-gold));
+                margin-bottom: 2px;
+            }
+
+            .ukm-module-card .mod-pending-label {
+                margin: 0;
+                font-size: 11.5px;
+                font-weight: 700;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                color: var(--poster-text-soft);
+            }
+
+            .ukm-module-card .mod-pending-date {
+                margin: 0;
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--poster-text);
+            }
+
+            .ukm-module-card .mod-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 7px 14px;
+                border-radius: 999px;
+                font-size: 12.5px;
+                font-weight: 700;
+                color: #08172f;
+                background: #f0f3fa;
+                border: 1px solid rgba(9, 24, 49, 0.15);
+                cursor: pointer;
+                transition: all 0.25s ease;
+            }
+
+            .ukm-module-card .mod-btn:hover {
+                background: var(--mod-color, #FFD100);
+                color: #08172f;
+                border-color: var(--mod-color, #FFD100);
             }
 
             .ukm-snapshot-shell {
@@ -1713,6 +1851,11 @@
 
                 .header-navigation .nav-right-item {
                     flex: 0 0 auto;
+                    margin-left: auto;
+                }
+
+                .header-navigation .primary-menu {
+                    justify-content: space-between;
                 }
 
                 .orbia-hero_one .hero-wrapper .hero-content {
@@ -2470,8 +2613,7 @@
                                     <li class="menu-item"><a href="#tentang">Tentang</a></li>
                                     <li class="menu-item"><a href="#modul">Modul</a></li>
                                     <li class="menu-item"><a href="#jadual">Jadual</a></li>
-                                    <li class="menu-item"><a href="#kelayakan">Kelayakan</a></li>
-                                    <li class="menu-item"><a href="#hadiah">Hadiah</a></li>
+                                    <li class="menu-item"><a href="#kelayakan">Kelayakan &amp; Hadiah</a></li>
                                     <li class="menu-item"><a href="#daftar">Daftar</a></li>
                                     <li class="menu-item"><a href="#faq">FAQ</a></li>
                                 </ul>
@@ -2502,32 +2644,34 @@
         <div id="smooth-wrapper">
             <div id="smooth-content">
                 <main>
-                    <section class="orbia-hero_one" id="overview">
+                    <section class="orbia-hero_one ukm-hero-news" id="overview">
                         <div class="hero-wrapper bg_cover">
                             <div class="container-fluid">
-                                <div class="row align-items-center justify-content-center justify-content-xl-start">
+                                <div class="row align-items-center justify-content-center justify-content-xl-between">
                                     <div class="col-xl-5 col-lg-10">
                                         <div class="hero-content text-center text-xl-start">
-                                            <h1 class="text-anm">AI MUDA<br>@NADI</h1>
-                                            <p class="ukm-hero-copy" data-aos="fade-up" data-aos-duration="1400">Program AI untuk murid Tingkatan 1 sehingga Tingkatan 6. Mempertingkat kemahiran <em>prompt engineering</em> bagi pembelajaran melalui perisian AI dan ekosistem pintar Google, termasuk Google Gemini dan Gemini Notebook.</p>
+                                            <span class="ukm-hero-kicker" data-aos="fade-down" data-aos-duration="1000"><i class="far fa-bullhorn"></i>Pengumuman Terkini</span>
+                                            <h1 class="text-anm">Modul 1:<br>Lengkapkan Segera!</h1>
+                                            <p class="ukm-hero-copy" data-aos="fade-up" data-aos-duration="1400">Peserta yang belum melengkapkan Modul 1 diingatkan untuk menonton rakaman dan menyelesaikan penyertaan &amp; kuiz sebelum tarikh akhir, bagi memperoleh <strong>Sijil Penyertaan</strong> dan <strong>Sijil Pencapaian</strong>.</p>
                                             <div class="ukm-hero-meta" data-aos="fade-up" data-aos-duration="1600">
-                                                <span class="ukm-meta-pill"><i class="far fa-calendar-alt"></i>24 Ogos &ndash; 25 Oktober 2026</span>
-                                                <span class="ukm-meta-pill"><i class="far fa-user-graduate"></i>Tingkatan 1 &ndash; Tingkatan 6</span>
-                                                <span class="ukm-meta-pill"><i class="far fa-badge-check"></i>Penyertaan Percuma</span>
+                                                <span class="ukm-meta-pill"><i class="far fa-calendar-alt"></i>Tarikh akhir: 31 Ogos 2026</span>
+                                                <span class="ukm-meta-pill"><i class="far fa-hourglass-half"></i>Tinggal 6 hari lagi</span>
                                             </div>
                                             <div class="hero-button-wrap">
                                                 <div class="orbia-button" data-aos="fade-up" data-aos-duration="1800">
-                                                    <a href="#jadual" class="theme-btn gradient-btn">Lihat Jadual Program<i class="far fa-arrow-right"></i></a>
+                                                    <a href="https://bit.ly/aimuda1" target="_blank" rel="noopener noreferrer" class="theme-btn gradient-btn">Tonton Modul 1<i class="far fa-play"></i></a>
                                                 </div>
                                                 <div class="orbia-button" data-aos="fade-up" data-aos-duration="2000">
-                                                    <a href="#daftar" class="theme-btn style-two">Cara Menyertai<i class="far fa-arrow-right"></i></a>
+                                                    <a href="https://bit.ly/penyertaan-aimuda" target="_blank" rel="noopener noreferrer" class="theme-btn style-two">Penyertaan &amp; Kuiz<i class="far fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="hero-image ukm-hero-panel" data-aos="fade-left" data-aos-duration="1400">
-                                    <img src="assets/images/hero/hero-profile-v2.webp" alt="Murid sekolah dan robot AI melambangkan pembelajaran masa depan" class="ukm-hero-img">
+                                    <div class="col-xl-5 col-lg-8 col-md-9">
+                                        <div class="ukm-hero-poster-frame" data-aos="fade-left" data-aos-duration="1400">
+                                            <img src="assets/images/poster/poster-taklimat-modul1-reminder.jpg" alt="Poster peringatan Modul 1 AI Muda@NADI &mdash; lengkapkan penyertaan dan kuiz sebelum 31 Ogos 2026" class="ukm-hero-poster-img">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2540,6 +2684,7 @@
                                     <div class="section-title text-center mb-45">
                                         <span class="sub-title" data-aos="fade-down" data-aos-duration="1000">Video Rasmi</span>
                                         <h2 class="text-anm">Montaj Pelancaran AI MUDA@NADI</h2>
+                                        <p class="ukm-highlight-lead" data-aos="fade-up" data-aos-duration="1200">Imbas kembali detik pelancaran rasmi AI Muda@NADI, program pembangunan kemahiran AI untuk murid sekolah menengah anjuran MCMC, CelcomDigi dan UKM.</p>
                                     </div>
                                 </div>
                             </div>
@@ -2695,6 +2840,14 @@
                                         <h4>Jelajah AI</h4>
                                         <span class="mod-focus">Kenali Dunia Pintar</span>
                                         <p>Pengenalan kepada AI, fungsi asas dan aktiviti penerokaan mudah.</p>
+                                        <a href="https://www.youtube.com/live/yKBOC4Q4fuA?si=G3tuD2jHYY0R0_vg" target="_blank" rel="noopener noreferrer" class="mod-video-preview">
+                                            <img src="https://i.ytimg.com/vi/yKBOC4Q4fuA/hqdefault.jpg" alt="Pratonton video Modul 1: Jelajah AI" loading="lazy">
+                                            <span class="mod-video-play"><i class="fas fa-play"></i></span>
+                                        </a>
+                                        <div class="mod-actions">
+                                            <a href="https://www.youtube.com/live/yKBOC4Q4fuA?si=G3tuD2jHYY0R0_vg" target="_blank" rel="noopener noreferrer" class="mod-btn"><i class="far fa-play"></i>Tonton Modul 1</a>
+                                            <button type="button" class="mod-btn" data-bs-toggle="modal" data-bs-target="#modul1DetailsModal"><i class="far fa-bell"></i>Lihat Butiran</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1200">
@@ -2706,6 +2859,11 @@
                                         <h4>Rakan Belajar AI</h4>
                                         <span class="mod-focus">Belajar Lebih Pintar</span>
                                         <p>Menggunakan AI sebagai rakan belajar, sokongan produktiviti dan pengurusan tugasan.</p>
+                                        <div class="mod-video-pending">
+                                            <i class="far fa-broadcast-tower"></i>
+                                            <p class="mod-pending-label">Akan disiarkan secara langsung</p>
+                                            <p class="mod-pending-date">1 September 2026 &middot; 2.30 petang</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1200">
@@ -2717,6 +2875,11 @@
                                         <h4>Detektif Ilmu AI</h4>
                                         <span class="mod-focus">Cari, Semak dan Ringkas</span>
                                         <p>Mencari, menyemak dan meringkaskan maklumat dengan bantuan AI.</p>
+                                        <div class="mod-video-pending">
+                                            <i class="far fa-broadcast-tower"></i>
+                                            <p class="mod-pending-label">Akan disiarkan secara langsung</p>
+                                            <p class="mod-pending-date">10 September 2026 &middot; 2.30 petang</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1200">
@@ -2728,6 +2891,11 @@
                                         <h4>Studio Kreatif AI</h4>
                                         <span class="mod-focus">Cipta Imej dan Slaid</span>
                                         <p>Menghasilkan imej, idea visual dan slaid pembentangan menggunakan AI.</p>
+                                        <div class="mod-video-pending">
+                                            <i class="far fa-broadcast-tower"></i>
+                                            <p class="mod-pending-label">Akan disiarkan secara langsung</p>
+                                            <p class="mod-pending-date">17 September 2026 &middot; 2.30 petang</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1200">
@@ -2739,6 +2907,11 @@
                                         <h4>Misi Data AI</h4>
                                         <span class="mod-focus">Belanjawan dan Keputusan Bijak</span>
                                         <p>Memahami data, membina belanjawan dan membuat keputusan berasaskan maklumat.</p>
+                                        <div class="mod-video-pending">
+                                            <i class="far fa-broadcast-tower"></i>
+                                            <p class="mod-pending-label">Akan disiarkan secara langsung</p>
+                                            <p class="mod-pending-date">22 September 2026 &middot; 2.30 petang</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-sm-12 mb-30" data-aos="fade-up" data-aos-duration="1200">
@@ -2750,6 +2923,11 @@
                                         <h4>Pencipta Ejen AI</h4>
                                         <span class="mod-focus">Pembantu Pembelajaran Masa Depan</span>
                                         <p>Mereka bentuk konsep ejen AI sebagai pembantu pembelajaran.</p>
+                                        <div class="mod-video-pending">
+                                            <i class="far fa-broadcast-tower"></i>
+                                            <p class="mod-pending-label">Akan disiarkan secara langsung</p>
+                                            <p class="mod-pending-date">29 September 2026 &middot; 2.30 petang</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -2916,61 +3094,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
 
-                    <section class="orbia-blog_one pt-115 pb-70" id="pensijilan">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-xl-8 col-lg-10">
-                                    <div class="section-title text-center mb-55">
-                                        <span class="sub-title" data-aos="fade-down" data-aos-duration="1000">Penilaian &amp; Pensijilan</span>
-                                        <h2 class="text-anm">Setiap modul mempunyai aktiviti penilaian, dan sijil diberikan kepada peserta yang melengkapkan program</h2>
-                                        <p class="ukm-highlight-lead" data-aos="fade-up" data-aos-duration="1200">Sijil akan diberikan kepada peserta modul, peserta yang melengkapkan enam modul, guru pembimbing serta finalis dan pemenang hackathon. Penyertaan dalam program ini juga membuka peluang pengiktirafan kokurikulum melalui PAJSK di bawah komponen Ekstra Kurikulum, peringkat kebangsaan.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                            <div class="ukm-elig-divider" id="hadiah"></div>
 
-                    <section class="orbia-pricing_one bg_cover pt-115 pb-90">
-                        <div class="container">
-                            <div class="row align-items-end">
-                                <div class="col-xl-7 col-lg-8">
-                                    <div class="section-title mb-55">
-                                        <span class="sub-title" data-aos="fade-down" data-aos-duration="1000">Yuran Penyertaan</span>
-                                        <h2 class="text-anm">Penyertaan program ini adalah percuma</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="orbia-pricing-item style-one mb-30" data-aos="fade-up" data-aos-duration="1000">
-                                        <div class="pricing-inner-wrapper">
-                                            <div class="pricing-header">
-                                                <span class="plan">Murid Tingkatan 1 &ndash; 6</span>
-                                                <h2 class="price">Percuma</h2>
-                                            </div>
-                                            <div class="pricing-body">
-                                                <ul class="check-list style-two">
-                                                    <li>Akses kepada enam modul pembelajaran dalam talian</li>
-                                                    <li>Bimbingan fasilitator dan mentor sepanjang program</li>
-                                                    <li>Peluang terpilih ke hackathon akhir peringkat kebangsaan</li>
-                                                    <li>Sijil penyertaan dan peluang pengiktirafan PAJSK</li>
-                                                </ul>
-                                            </div>
-                                            <div class="pricing-button">
-                                                <a href="#daftar" class="theme-btn gradient-btn"><span>Cara Menyertai<i class="far fa-arrow-right"></i></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="ukm-rates-section pt-115 pb-120" id="hadiah">
-                        <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-xl-8 col-lg-10">
                                     <div class="section-title text-center mb-55">
@@ -3018,6 +3144,56 @@
                                             <a href="#daftar" class="ukm-rates-btn secondary">
                                                 <i class="far fa-arrow-right"></i>Cara Menyertai
                                             </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="orbia-blog_one pt-115 pb-70" id="pensijilan">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-xl-8 col-lg-10">
+                                    <div class="section-title text-center mb-55">
+                                        <span class="sub-title" data-aos="fade-down" data-aos-duration="1000">Penilaian &amp; Pensijilan</span>
+                                        <h2 class="text-anm">Setiap modul mempunyai aktiviti penilaian, dan sijil diberikan kepada peserta yang melengkapkan program</h2>
+                                        <p class="ukm-highlight-lead" data-aos="fade-up" data-aos-duration="1200">Sijil akan diberikan kepada peserta modul, peserta yang melengkapkan enam modul, guru pembimbing serta finalis dan pemenang hackathon. Penyertaan dalam program ini juga membuka peluang pengiktirafan kokurikulum melalui PAJSK di bawah komponen Ekstra Kurikulum, peringkat kebangsaan.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="orbia-pricing_one bg_cover pt-115 pb-90">
+                        <div class="container">
+                            <div class="row align-items-end">
+                                <div class="col-xl-7 col-lg-8">
+                                    <div class="section-title mb-55">
+                                        <span class="sub-title" data-aos="fade-down" data-aos-duration="1000">Yuran Penyertaan</span>
+                                        <h2 class="text-anm">Penyertaan program ini adalah percuma</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="orbia-pricing-item style-one mb-30" data-aos="fade-up" data-aos-duration="1000">
+                                        <div class="pricing-inner-wrapper">
+                                            <div class="pricing-header">
+                                                <span class="plan">Murid Tingkatan 1 &ndash; 6</span>
+                                                <h2 class="price">Percuma</h2>
+                                            </div>
+                                            <div class="pricing-body">
+                                                <ul class="check-list style-two">
+                                                    <li>Akses kepada enam modul pembelajaran dalam talian</li>
+                                                    <li>Bimbingan fasilitator dan mentor sepanjang program</li>
+                                                    <li>Peluang terpilih ke hackathon akhir peringkat kebangsaan</li>
+                                                    <li>Sijil penyertaan dan peluang pengiktirafan PAJSK</li>
+                                                </ul>
+                                            </div>
+                                            <div class="pricing-button">
+                                                <a href="#daftar" class="theme-btn gradient-btn"><span>Cara Menyertai<i class="far fa-arrow-right"></i></span></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -3264,8 +3440,7 @@
                                                             <li><a href="#tentang">Tentang Program</a></li>
                                                             <li><a href="#modul">Modul</a></li>
                                                             <li><a href="#jadual">Jadual</a></li>
-                                                            <li><a href="#kelayakan">Kelayakan</a></li>
-                                                            <li><a href="#hadiah">Hadiah</a></li>
+                                                            <li><a href="#kelayakan">Kelayakan &amp; Hadiah</a></li>
                                                             <li><a href="#daftar">Daftar Sekarang</a></li>
                                                             <li><a href="#faq">Soalan Lazim (FAQ)</a></li>
                                                             <li><a href="#poster">Poster Rasmi</a></li>
